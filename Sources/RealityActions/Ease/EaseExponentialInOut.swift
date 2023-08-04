@@ -10,8 +10,8 @@ import RealityKit
 
 /// Easing function: exponential in-and-then-out
 public class EaseExponentialInOut: ActionEase {
-    public override init (action: FiniteTimeAction) {
-        super.init(action: action)
+    public override init (_ action: FiniteTimeAction) {
+        super.init(action)
     }
     
     override func startAction (target: Entity) -> ActionState? {
@@ -19,7 +19,7 @@ public class EaseExponentialInOut: ActionEase {
     }
     
     public override func reverse() -> ActionEase {
-        EaseExponentialInOut (action: innerAction.reverse ())
+        EaseExponentialInOut (innerAction.reverse ())
     }
 }
 

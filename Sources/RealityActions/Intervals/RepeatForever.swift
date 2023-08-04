@@ -14,7 +14,7 @@ public class RepeatForever: FiniteTimeAction {
     
     /// Initializes the RepeatForever from a variable list of actions
     /// - Parameter actions: a variable argument list
-    public convenience init? (_ actions: FiniteTimeAction...) {
+    public convenience init (_ actions: FiniteTimeAction...) {
         self.init(actions.compactMap {$0})
     }
     

@@ -13,7 +13,7 @@ import RealityKit
 public class ActionEase: FiniteTimeAction {
     let innerAction: FiniteTimeAction
     
-    public init (action: FiniteTimeAction)
+    public init (_ action: FiniteTimeAction)
     {
         innerAction = action
         super.init(duration: action.duration)
@@ -24,7 +24,7 @@ public class ActionEase: FiniteTimeAction {
     }
     
     public override func reverse() -> FiniteTimeAction {
-        ActionEase (action: innerAction.reverse())
+        ActionEase (innerAction.reverse())
     }
 }
 

@@ -17,9 +17,9 @@ public class EaseCustom: ActionEase {
     ///   - action: The action to act on
     ///   - easeFunc: A custom function that takes a floating point value between 0 and 1 representing the time for the easing,
     ///   and which should return a value betwee 0 and 1 for how this time is altered.
-    public init (action: FiniteTimeAction, _ easeFunc: @escaping (Float)-> Float) {
+    public init (_ action: FiniteTimeAction, _ easeFunc: @escaping (Float)-> Float) {
         self.easeFunc = easeFunc
-        super.init(action: action)
+        super.init(action)
     }
     
     override func startAction (target: Entity) -> ActionState? {

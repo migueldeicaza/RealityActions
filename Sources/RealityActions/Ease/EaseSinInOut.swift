@@ -10,8 +10,8 @@ import RealityKit
 
 /// Easing function: ease sin in-and-then-out
 public class EaseSinInOut: ActionEase {
-    public override init (action: FiniteTimeAction) {
-        super.init(action: action)
+    public override init (_ action: FiniteTimeAction) {
+        super.init(action)
     }
     
     override func startAction (target: Entity) -> ActionState? {
@@ -19,7 +19,7 @@ public class EaseSinInOut: ActionEase {
     }
     
     public override func reverse() -> ActionEase {
-        EaseSinInOut (action: innerAction.reverse ())
+        EaseSinInOut (innerAction.reverse ())
     }
 }
 

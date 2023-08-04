@@ -11,9 +11,9 @@ import RealityKit
 /// Base class for easing function with rate parameters
 public class EaseRateAction: ActionEase {
     let rate: Float
-    public init (action: FiniteTimeAction, rate: Float) {
+    public init (_ action: FiniteTimeAction, rate: Float) {
         self.rate = rate
-        super.init(action: action)
+        super.init(action)
     }
     
     override func startAction (target: Entity) -> ActionState? {
@@ -21,7 +21,7 @@ public class EaseRateAction: ActionEase {
     }
     
     public override func reverse() -> ActionEase {
-        EaseRateAction (action: innerAction.reverse (), rate: 1/rate)
+        EaseRateAction (innerAction.reverse (), rate: 1/rate)
     }
 }
 

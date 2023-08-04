@@ -11,9 +11,6 @@ import RealityKit
 /// An action that invokes the calling continuation
 class AsyncSupport: ActionInstant {
     var cc: CheckedContinuation<Void,Never>?
-    deinit {
-        print ("HERE")
-    }
     public init (cc: CheckedContinuation<Void,Never>) {
         self.cc = cc
     }

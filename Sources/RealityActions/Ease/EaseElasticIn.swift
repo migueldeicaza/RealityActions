@@ -10,8 +10,8 @@ import RealityKit
 
 /// Easing function: elastic-in
 public class EaseElasticIn: EaseElastic {
-    public override init (action: FiniteTimeAction, period: Float = 0.3) {
-        super.init(action: action, period: period)
+    public override init (_ action: FiniteTimeAction, period: Float = 0.3) {
+        super.init(action, period: period)
     }
     
     override func startAction (target: Entity) -> ActionState? {
@@ -19,7 +19,7 @@ public class EaseElasticIn: EaseElastic {
     }
     
     public override func reverse() -> ActionEase {
-        EaseElasticOut (action: innerAction.reverse (), period: period)
+        EaseElasticOut (innerAction.reverse (), period: period)
     }
 }
 
