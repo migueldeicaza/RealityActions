@@ -11,7 +11,9 @@ import RealityKit
 /// An action that invokes the calling continuation
 class AsyncSupport: ActionInstant {
     var cc: CheckedContinuation<Void,Never>?
-    
+    deinit {
+        print ("HERE")
+    }
     public init (cc: CheckedContinuation<Void,Never>) {
         self.cc = cc
     }
@@ -30,6 +32,13 @@ class AsyncSupportState: ActionInstantState {
     }
     
     override func update(time: Float) {
+        if let cc = aas.cc {
+            aas.cc = nil
+            cc.resume()
+        }
+    }
+    
+    override func stop() {
         if let cc = aas.cc {
             aas.cc = nil
             cc.resume()

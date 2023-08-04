@@ -73,6 +73,7 @@ public class SequenceAction: FiniteTimeAction {
     }
 }
 
+var said = 0
 class SequenceActionState: FiniteTimeActionState {
     enum ActiveAction {
         case none
@@ -85,8 +86,11 @@ class SequenceActionState: FiniteTimeActionState {
     let hasInfiniteAction: Bool
     let split: Float
     var last: ActiveAction
+    var id: Int
     
     init(action: SequenceAction, target: Entity) {
+        id = said
+        said += 1
         self.cancel = action.cancel
         action1 = action.action1
         action2 = action.action2
@@ -118,20 +122,20 @@ class SequenceActionState: FiniteTimeActionState {
     override func step(dt: Float) {
         switch last {
         case .none:
-            super.step (dt: dt)
+            break
         case .first:
             if action1 is RepeatForever {
                 action1state?.step (dt: dt)
-            } else {
-                super.step(dt: dt)
+                return
             }
         case .second:
             if action2 is RepeatForever {
                 action2state?.step (dt: dt)
-            } else {
-                super.step(dt: dt)
+                return
             }
         }
+        super.step (dt: dt)
+
     }
     
     override func update(time: Float) {
@@ -158,6 +162,7 @@ class SequenceActionState: FiniteTimeActionState {
             }
         }
         
+        //print ("Update: time=\(time) found=\(found)")
         if found == .second {
             if last == .none {
                 // action1 was skipped, execute it
@@ -173,6 +178,7 @@ class SequenceActionState: FiniteTimeActionState {
             // XXX: Bug. this case doesn't contemplate when _last==-1, found=0 and in "reverse mode"
             // since it will require a hack to know if an action is on reverse mode or not.
             // "step" should be overriden, and the "reverseMode" value propagated to inner Sequences.
+            fatalError()
             action2state?.update (time: 0)
             action2state?.stop ()
         }
@@ -189,10 +195,8 @@ class SequenceActionState: FiniteTimeActionState {
                 break
             case .first:
                 action1state = action1.startAction(target: target)
-                action1state?.update(time: new_t)
             case .second:
-                action2state = action.startAction(target: target)
-                action2state?.update(time: new_t)
+                action2state = action2.startAction(target: target)
             }
         }
         foundState?.update(time: new_t)

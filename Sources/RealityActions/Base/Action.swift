@@ -33,6 +33,7 @@ class ActionState {
     init (action: BaseAction, target: Entity) {
         self.action = action
         self.target = target
+        self.originalTarget = target
     }
     
     /// <summary>
