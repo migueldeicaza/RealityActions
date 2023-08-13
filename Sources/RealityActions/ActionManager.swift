@@ -193,6 +193,10 @@ public class ActionManager {
                 break
             }
         }
+//        print ("Targets: \(targets.count)")
+//        for x in targets.keys {
+//            print ("   \(x.name) - ")
+//        }
         assert (!isActionRunning, "Action is already running for this target.");
         guard let state = action.startAction(target: target) else { return nil }
         element.actionStates.append(state)

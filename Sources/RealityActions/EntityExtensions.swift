@@ -13,12 +13,12 @@ let globalActionManager: ActionManager = {
 } ()
 
 public extension Entity {
-    /// Executes an action
+    /// Starts executing an action, does not wait for completion.
     func start (_ action: BaseAction) {
         globalActionManager.add(action: action, target: self)
     }
     
-    /// Executes one or more FiniteTimeActions
+    /// Starts executing an action, does not wait for completion.
     func start (_ actions: FiniteTimeAction...) {
         switch actions.count {
         case 0:

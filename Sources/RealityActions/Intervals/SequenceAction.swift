@@ -141,7 +141,7 @@ class SequenceActionState: FiniteTimeActionState {
     override func update(time: Float) {
         guard let target else { return }
         var found: ActiveAction
-        let foundState: ActionState?
+        var foundState: ActionState?
         var new_t: Float
         
         if time < split {
@@ -195,8 +195,10 @@ class SequenceActionState: FiniteTimeActionState {
                 break
             case .first:
                 action1state = action1.startAction(target: target)
+                foundState = action1state
             case .second:
                 action2state = action2.startAction(target: target)
+                foundState = action2state
             }
         }
         foundState?.update(time: new_t)
