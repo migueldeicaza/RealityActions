@@ -179,8 +179,8 @@ class SequenceActionState: FiniteTimeActionState {
             // since it will require a hack to know if an action is on reverse mode or not.
             // "step" should be overriden, and the "reverseMode" value propagated to inner Sequences.
             fatalError()
-            action2state?.update (time: 0)
-            action2state?.stop ()
+//            action2state?.update (time: 0)
+//            action2state?.stop ()
         }
         
         // Last action found and it is done.

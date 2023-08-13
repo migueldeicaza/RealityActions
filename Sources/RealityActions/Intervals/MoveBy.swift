@@ -42,7 +42,7 @@ class MoveByState: FiniteTimeActionState {
     
     override func update(time: Float) {
         guard let target else { return }
-        let currentPos = target.position
+        //let currentPos = target.position
 //        let diff = currentPos - previousPosition
 //        startPosition = diff + startPosition
         
