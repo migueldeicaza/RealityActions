@@ -84,5 +84,11 @@ public struct BezierConfig {
     public var controlPoint2: SIMD3<Float>
     /// The end position
     public var endPosition: SIMD3<Float>
+    
+    public init (controlPoint1: SIMD3<Float>, controlPoint2: SIMD3<Float>, endPosition: SIMD3<Float>){
+        self.controlPoint1 = controlPoint1
+        self.controlPoint2 = controlPoint2
+        self.endPosition = endPosition
+    }
 }
 
