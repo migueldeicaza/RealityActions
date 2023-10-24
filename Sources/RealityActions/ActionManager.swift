@@ -129,18 +129,21 @@ public class ActionManager {
         targetsAvailable = targets.count > 0
     }
         
+    /// Pauses any actions on the specified entity
     public func pause (target: Entity) {
         if let element = targets [target] {
             element.paused = true
         }
     }
     
+    /// Resumes the actions on the specified entity/
     public func resume (target: Entity){
         if let element = targets [target] {
             element.paused = false
         }
     }
     
+    /// Pauses all the running actions, and returns an array of the affected entities.
     public func pauseAllRunningActions() -> [Entity] {
         var idsWithActions: [Entity] = []
         
@@ -154,6 +157,7 @@ public class ActionManager {
         return idsWithActions
     }
     
+    /// Resumes the actions on the specified entities
     public func resume (targets: [Entity]) {
         targets.forEach { resume (target: $0) }
     }
@@ -277,6 +281,7 @@ public class ActionManager {
 
     }
     
+    /// Removes an action by tag from the specified entity.
     public func removeAction (tag: Int?, target: Entity) {
         // Early out if we do not have any targets to search
         guard targets.count != 0 else { return }

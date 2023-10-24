@@ -56,18 +56,22 @@ public extension Entity {
         }
     }
 
+    /// Removes a specific action from the entity
     func remove (action: BaseAction) {
         globalActionManager.remove(action: action, target: self)
     }
     
+    /// Removes all the actions applied to this entity
     func removeAllActions () {
         globalActionManager.removeAllActions(forTarget: self)
     }
     
+    /// Pauses all the actions on this entity
     func pauseActions () {
         globalActionManager.pause(target: self)
     }
     
+    /// Resumes execution of all the actions on this entity that had previously been paused by ``pauseActions()``
     func resumeActions () {
         globalActionManager.resume(target: self)
     }
