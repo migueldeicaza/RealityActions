@@ -26,6 +26,9 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
       - name: Build DocC
+        uses: SwiftyLab/setup-swift@latest
+        with:
+          swift-version: '5.9'
         run: |
           swift package generate-documentation
           swift package --allow-writing-to-directory ./docs generate-documentation --target RealityActions --output-path ./docs --transform-for-static-hosting --hosting-base-path RealityActions
