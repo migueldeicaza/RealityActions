@@ -1,0 +1,40 @@
+# Name your workflow.
+name: Deploy DocC
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      # Must be set to this for deploying to GitHub Pages
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: macos-13
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+      - name: Build DocC
+        run: |
+	  swift package generate-documentation
+	  swift package --allow-writing-to-directory ./docs generate-documentation --target RealityActions --output-path ./docs --transform-for-static-hosting --hosting-base-path RealityActions
+          echo "<script>window.location.href += \"/documentation/realityactions\"</script>" > docs/index.html;
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload only docs directory
+          path: 'docs'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1

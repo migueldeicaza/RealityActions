@@ -8,7 +8,6 @@ a period of time on an entity.
 
 ## Overview
 
-<!--@START_MENU_TOKEN@-->Text<!--@END_MENU_TOKEN@-->
 
 ## Topics
 
