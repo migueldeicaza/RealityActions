@@ -27,8 +27,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Build DocC
         run: |
-	  swift package generate-documentation
-	  swift package --allow-writing-to-directory ./docs generate-documentation --target RealityActions --output-path ./docs --transform-for-static-hosting --hosting-base-path RealityActions
+          swift package generate-documentation
+          swift package --allow-writing-to-directory ./docs generate-documentation --target RealityActions --output-path ./docs --transform-for-static-hosting --hosting-base-path RealityActions
           echo "<script>window.location.href += \"/documentation/realityactions\"</script>" > docs/index.html;
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
