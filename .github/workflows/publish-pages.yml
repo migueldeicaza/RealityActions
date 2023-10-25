@@ -4,6 +4,8 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+env:
+  DEVELOPER_DIR: /Applications/Xcode_11.2.app/Contents/Developer
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -23,10 +25,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: macos-13
     steps:
-      - name: Dependency
-        uses: SwiftyLab/setup-swift@latest
-        with:
-          swift-version: '5.9'
+      #- name: Dependency
+      #  uses: SwiftyLab/setup-swift@latest
+      #  with:
+      #    swift-version: '5.9'
       - name: Checkout 🛎️
         uses: actions/checkout@v3
       - name: Build DocC
