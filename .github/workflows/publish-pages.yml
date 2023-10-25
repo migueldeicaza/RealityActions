@@ -23,12 +23,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: macos-13
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v3
-      - name: Build DocC
+      - name: Dependency
         uses: SwiftyLab/setup-swift@latest
         with:
           swift-version: '5.9'
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+      - name: Build DocC
         run: |
           swift package generate-documentation
           swift package --allow-writing-to-directory ./docs generate-documentation --target RealityActions --output-path ./docs --transform-for-static-hosting --hosting-base-path RealityActions
