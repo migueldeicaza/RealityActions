@@ -8,6 +8,13 @@
 import Foundation
 import RealityKit
 
+/// This implement the action manager system that is registered with RealityKit
+///
+/// On your application, make sure that you register this sytem, before you can
+/// attach actions to entities.   You can do that like this:
+/// ```
+/// ActionManagerSystem.registerSystem();
+/// ```
 public class ActionManagerSystem : System {
     public required init(scene: Scene) {
     }

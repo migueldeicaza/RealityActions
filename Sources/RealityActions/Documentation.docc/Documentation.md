@@ -8,7 +8,6 @@ a period of time on an entity.
 
 ## Overview
 
-
 ## Topics
 
 ### Orchestration
@@ -16,12 +15,19 @@ a period of time on an entity.
 - ``ActionManager``
 
 ### Base Types
-- ``Action``
-- ``AmplitudeAction``
+
+All actions in RealityAction derive from ``BaseAction``, which provides a ``BaseAction/tag`` property
+that can be used to identify the action.  
+
+The ``FiniteTimeAction`` version is for actions that have a time duration, while the 
+``Speed`` ones can alter the execution speed of their actions.
+
+- ``BaseAction``
 - ``FiniteTimeAction``
 - ``Speed``
 
 ### Easing Functions
+ 
 
 - ``ActionEase``
 - ``EaseBackIn``
@@ -50,7 +56,6 @@ a period of time on an entity.
 
 - ``ActionInstant``
 - ``ApplyTransform``
-- ``AsyncSupport``
 - ``Call``
 - ``Hide``
 - ``Place``
@@ -65,8 +70,6 @@ a period of time on an entity.
 - ``BezierTo``
 - ``Blink``
 - ``DelayTime``
-- ``ExtraAction``
-- ``FadeIn``
 - ``IntervalCall``
 - ``JumpBy``
 - ``JumpTo``
@@ -76,7 +79,6 @@ a period of time on an entity.
 - ``Repeat``
 - ``RepeatForever``
 - ``ReverseTime``
-- ``RotateAroundBy``
 - ``RotateBy``
 - ``RotateTo``
 - ``ScaleBy``

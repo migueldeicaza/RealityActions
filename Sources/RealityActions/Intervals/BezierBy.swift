@@ -77,6 +77,9 @@ class BezierByState: FiniteTimeActionState {
 
 
 /// Defines a bezier segment in 3D space
+///
+/// Use this to define the bezier paths that either ``BezierBy`` or ``BezierTo`` use.
+/// 
 public struct BezierConfig {
     /// The first control point
     public var controlPoint1: SIMD3<Float>

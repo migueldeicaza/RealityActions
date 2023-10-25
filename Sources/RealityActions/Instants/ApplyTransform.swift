@@ -8,7 +8,7 @@
 import Foundation
 import RealityKit
 
-/// This action sets the ``Entity``'s transform property to the one specified
+/// This action sets the Entity's transform property to the one specified
 public class ApplyTransform: ActionInstant {
     let transform: Transform
     /// Constructs an instance of ``ApplyTransform``

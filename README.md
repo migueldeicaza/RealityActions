@@ -2,6 +2,8 @@ RealityActions brings the popular [Cocos2D-style action
 framework](https://docs.cocos2d-x.org/cocos2d-x/v3/en/actions/) to
 Entities in RealityKit.
 
+Browse the [API Documentation](https://migueldeicaza.github.io/RealityActions/documentation/realityactions/).
+
 To use, reference this module from SwiftPM:
 
 ```
